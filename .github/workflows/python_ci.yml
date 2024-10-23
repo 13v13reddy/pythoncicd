@@ -3,7 +3,7 @@ name: CI/CD for MyTodoApp
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
