@@ -19,7 +19,7 @@ def add_task():
 @app.route('/remove/<int:task_id>', methods=['POST'])
 def remove_task(task_id):
     if 0 <= task_id < len(tasks):
-        tasks.pop(task_id)  # Remove the task from the list
+        tasks.pop(task_id)  # Remove the task from the list based on its index
     return redirect('/')
 
 if __name__ == '__main__':
