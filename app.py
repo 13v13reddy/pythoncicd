@@ -1,9 +1,8 @@
-# app.py
-
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
+# Simple in-memory list to store tasks (could be replaced by a database)
 tasks = []
 
 @app.route('/')
@@ -15,14 +14,14 @@ def add_task():
     task = request.form.get('task')
     if task:
         tasks.append(task)
-    return redirect(url_for('index'))
+    return redirect('/')
 
-@app.route('/remove/<int:task_index>', methods=['POST'])
-def remove_task(task_index):
-    if 0 <= task_index < len(tasks):
-        tasks.pop(task_index)
-    return redirect(url_for('index'))
+@app.route('/remove/<int:task_id>', methods=['POST'])
+def remove_task(task_id):
+    if 0 <= task_id < len(tasks):
+        tasks.pop(task_id)  # Remove the task from the list
+    return redirect('/')
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run(debug=True)
 
